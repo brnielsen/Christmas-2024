@@ -6,6 +6,8 @@ public class ArcMover : MonoBehaviour
     [SerializeField] private float height = 5f;
     [SerializeField] private float duration = 1f;
 
+    [SerializeField] private float destroyOnMissTime = 2f;
+
     [SerializeField] private Transform _targetTransform;
 
     private Vector3 originalPosition;
@@ -33,6 +35,10 @@ public class ArcMover : MonoBehaviour
             ResetPosition();
         }
     }
+    public void SetTargetTransform(Transform targetTransform)
+    {
+        _targetTransform = targetTransform;
+    }
 
     public void LaunchInArc(Vector3 targetPosition)
     {
@@ -42,6 +48,7 @@ public class ArcMover : MonoBehaviour
     [ContextMenu("Launch To Target")]
     public void LaunchToTarget()
     {
+        SetTargetTransform(ChimneyManager.Instance.ClosestChimney(transform.position).DunkTarget);
         if (_targetTransform != null)
         {
             LaunchInArc(_targetTransform.position);
@@ -76,5 +83,9 @@ public class ArcMover : MonoBehaviour
         }
 
         transform.position = endPos;
+
+        yield return new WaitForSeconds(destroyOnMissTime);
+        GetComponent<Present>().Miss();
+        yield return null;
     }
 }

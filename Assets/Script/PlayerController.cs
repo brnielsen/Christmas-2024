@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private Present heldPresent;
 
     [Header("Dunk Collision")]
-    [SerializeField] private float minDistanceToDunk = 0.5f;
 
     private bool isJumping = false;
     private float jumpTimer = 0f;
@@ -52,7 +51,11 @@ public class PlayerController : MonoBehaviour
         {
             verticalVelocity = 0f;
         }
+
+        
     }
+
+
 
     private void StartJump()
     {
@@ -99,8 +102,19 @@ public class PlayerController : MonoBehaviour
                 if (Vector3.Distance(transform.position, closestChimney.DunkTarget.position) <= closestChimney.DunkRadius)
                 {
                     Dunk();
+                }else{
+                    Miss();
                 }
             }
+        }
+    }
+
+    private void Miss()
+    {
+        Debug.Log("Miss");
+        if (heldPresent != null){
+            heldPresent.Miss();
+            heldPresent = null;
         }
     }
 

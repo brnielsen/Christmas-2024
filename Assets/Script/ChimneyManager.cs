@@ -7,6 +7,8 @@ public class ChimneyManager : MonoBehaviour
 
     public List<Chimney> chimneys = new List<Chimney>();
 
+    public PlayerController PlayerController;
+
     private void Awake()
     {
         if (Instance == null)
@@ -20,12 +22,27 @@ public class ChimneyManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (PlayerController == null)
+        {
+            PlayerController = FindAnyObjectByType<PlayerController>();
+
+        }
+    }
+
     public Chimney ClosestChimney(Vector3 position)
     {
         float closestDistance = Mathf.Infinity;
         Chimney closestChimney = null;
         foreach (Chimney chimney in chimneys)
         {
+
+            if (chimney.GetComponentInChildren<SpriteRenderer>().isVisible == false || (chimney.transform.position.x + chimney.DunkRadius) < PlayerController.transform.position.x)
+            {
+                continue;
+            }
+
             float distance = Vector3.Distance(position, chimney.transform.position);
             if (distance < closestDistance)
             {
