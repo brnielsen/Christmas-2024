@@ -977,8 +977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f703b7326d14f41b0abf52129026ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 6
-  jumpDuration: 0.5
+  jumpHeight: 8
+  jumpDuration: 0.6
   gravity: -9.81
   groundLayer:
     serializedVersion: 2
@@ -3024,7 +3024,7 @@ Transform:
   m_GameObject: {fileID: 1815070015}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.088, y: -1.462, z: -0.11964423}
+  m_LocalPosition: {x: 0.98, y: -1.462, z: -0.11964423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3446,7 +3446,7 @@ PrefabInstance:
       objectReference: {fileID: 1521828474}
     - target: {fileID: 5577836060419261199, guid: c95d36d3684e1174386d4a98ba64285b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.09
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 5577836060419261199, guid: c95d36d3684e1174386d4a98ba64285b, type: 3}
       propertyPath: m_LocalPosition.y
